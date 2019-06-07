@@ -7,7 +7,7 @@ import com.globant.counter.android.mvp.presenter.CountPresenter
 import com.globant.counter.android.mvp.view.CountView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity: AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var presenter: CountPresenter
 

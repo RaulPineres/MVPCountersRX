@@ -7,7 +7,7 @@ open class ActivityView(activity: Activity) {
 
     private var activityRef: WeakReference<Activity> = WeakReference(activity)
 
-    fun getActivity(): Activity?{
+    fun getActivity(): Activity? {
         return activityRef.get()
     }
 }

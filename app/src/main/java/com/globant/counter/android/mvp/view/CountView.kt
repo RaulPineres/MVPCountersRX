@@ -1,22 +1,23 @@
 package com.globant.counter.android.mvp.view
 
 import android.app.Activity
-import com.globant.counter.android.util.bus.RxBus
-import com.globant.counter.android.util.bus.observers.CountButtonUpBusObserver
-import com.globant.counter.android.util.bus.observers.ResetButtonObserver
+import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.activity_main.*
 
-class CountView(private val activitys: Activity): ActivityView(activitys) {
+class CountView(private val activityMain: Activity): ActivityView(activityMain) {
 
-    fun setCount(count: String){
-        activitys.count_label.text = count
+    val buttonUpSubject : PublishSubject<Unit> = PublishSubject.create()
+    val buttonResetSubject: PublishSubject<Unit> = PublishSubject.create()
+
+    fun setCount(count: String) {
+        activityMain.count_label.text = count
     }
 
-    fun countButtonPressed(){
-        RxBus.post(CountButtonUpBusObserver.CountButtonUp())
+    fun countButtonPressed() {
+        buttonUpSubject.onNext(Unit)
     }
 
-    fun resetButtonPressed(){
-        RxBus.post(ResetButtonObserver.ResetButtonPressed())
+    fun resetButtonPressed() {
+        buttonResetSubject.onNext(Unit)
     }
 }

@@ -3,39 +3,33 @@ package com.globant.counter.android.mvp.presenter
 import com.globant.counter.android.mvp.model.CountModel
 import com.globant.counter.android.mvp.view.CountView
 import com.globant.counter.android.util.bus.RxBus
-import com.globant.counter.android.util.bus.observers.CountButtonUpBusObserver
-import com.globant.counter.android.util.bus.observers.ResetButtonObserver
 
-class CountPresenter(private val model: CountModel, private val views: CountView) {
+class CountPresenter(private val model: CountModel, private val view: CountView) {
 
-    fun onCountButtonPressed(){
+    fun onCountButtonPressed() {
         model.inc()
-        views.setCount(model.getCounts().toString())
+        view.setCount(model.getCounts().toString())
     }
 
-    fun onResetButtonPressed(){
+    fun onResetButtonPressed() {
         model.reset()
-        views.setCount(model.getCounts().toString())
+        view.setCount(model.getCounts().toString())
     }
 
-    fun register(){
-        val activity = views.getActivity() ?: return
+    fun register() {
+        view.buttonUpSubject
+                .subscribe {
+                    onCountButtonPressed()
+                }
 
-        RxBus.subscribe(activity, object : CountButtonUpBusObserver(){
-            override fun onEvent(value: CountButtonUp?) {
-                onCountButtonPressed()
-            }
-        })
-
-        RxBus.subscribe(activity, object : ResetButtonObserver() {
-            override fun onEvent(value: ResetButtonPressed?) {
-                onResetButtonPressed()
-            }
-        })
+        view.buttonResetSubject
+                .subscribe {
+                    onResetButtonPressed()
+                }
     }
 
-    fun unregister(){
-        val activity = views.getActivity() ?: return
+    fun unregister() {
+        val activity = view.getActivity() ?: return
         RxBus.clear(activity)
     }
 }
