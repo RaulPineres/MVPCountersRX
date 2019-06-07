@@ -19,5 +19,4 @@ class CountView(private val activitys: Activity): ActivityView(activitys) {
     fun resetButtonPressed(){
         RxBus.post(ResetButtonObserver.ResetButtonPressed())
     }
-
 }
