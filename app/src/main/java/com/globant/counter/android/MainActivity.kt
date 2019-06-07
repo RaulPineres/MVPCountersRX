@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity: AppCompatActivity() {
 
-    lateinit var presenter: CountPresenter
+    private lateinit var presenter: CountPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,5 +35,4 @@ class MainActivity: AppCompatActivity() {
         super.onPause()
         presenter.unregister()
     }
-
 }
