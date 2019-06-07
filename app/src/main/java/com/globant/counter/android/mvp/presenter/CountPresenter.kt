@@ -1,30 +1,42 @@
 package com.globant.counter.android.mvp.presenter
 
-import com.globant.counter.android.mvp.model.CountModel
+import android.util.Log
+import com.globant.counter.android.mvp.model.CalculatorModel
 import com.globant.counter.android.mvp.view.CountView
 import com.globant.counter.android.util.bus.RxBus
 
-class CountPresenter(private val model: CountModel, private val view: CountView) {
+class CountPresenter(private val model: CalculatorModel, private val view: CountView) {
 
-    fun onCountButtonPressed() {
-        model.inc()
-        view.setCount(model.getCounts().toString())
+    fun onAddButtonPressed(input: Int) {
+        model.set(input)
+        view.setNum("")
     }
 
-    fun onResetButtonPressed() {
-        model.reset()
-        view.setCount(model.getCounts().toString())
+    fun onEqualButtonPressed(input: Int){
+        val total = model.getNum() + input
+        model.set(total)
+        view.setNum(model.getNum().toString())
+    }
+
+    fun onClearButtonPressed() {
+        model.clear()
+        view.setNum("")
     }
 
     fun register() {
-        view.buttonUpSubject
+        view.buttonAddSubject
                 .subscribe {
-                    onCountButtonPressed()
+                    onAddButtonPressed(it)
                 }
 
-        view.buttonResetSubject
+        view.buttonEqualSubject
                 .subscribe {
-                    onResetButtonPressed()
+                    onEqualButtonPressed(it)
+                }
+
+        view.buttonClearSubject
+                .subscribe {
+                    onClearButtonPressed()
                 }
     }
 

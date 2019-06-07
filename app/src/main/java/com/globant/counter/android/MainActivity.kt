@@ -2,7 +2,7 @@ package com.globant.counter.android
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.globant.counter.android.mvp.model.CountModel
+import com.globant.counter.android.mvp.model.CalculatorModel
 import com.globant.counter.android.mvp.presenter.CountPresenter
 import com.globant.counter.android.mvp.view.CountView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,14 +15,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val countViews = CountView(this)
-        presenter = CountPresenter(CountModel(), countViews)
+        presenter = CountPresenter(CalculatorModel(), countViews)
 
-        count_button.setOnClickListener {
-            countViews.countButtonPressed()
+        add_button.setOnClickListener {
+            val number = calc_screen.text.toString()
+            countViews.addButtonPressed(number.toInt())
         }
 
-        reset_button.setOnClickListener {
-            countViews.resetButtonPressed()
+        equal_button.setOnClickListener {
+            val number = calc_screen.text.trim().toString()
+            countViews.equalButtonPressed(number.toInt())
+        }
+
+        clear_button.setOnClickListener {
+            countViews.clearButtonPressed()
         }
     }
 

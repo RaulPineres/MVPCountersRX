@@ -14,7 +14,7 @@ import butterknife.OnClick;
 
 public class CountViewBackup extends ActivityView {
 
-    @BindView(R.id.count_label) TextView countLabel;
+    @BindView(R.id.calc_screen) TextView countLabel;
 
     public CountViewBackup(Activity activity) {
         super(activity);
@@ -25,12 +25,12 @@ public class CountViewBackup extends ActivityView {
         countLabel.setText(count);
     }
 
-    @OnClick(R.id.count_button)
+    @OnClick(R.id.add_button)
     public void countButtonPressed() {
         RxBus.post(new CountButtonUpBusObserver.CountButtonUp());
     }
 
-    @OnClick(R.id.reset_button)
+    @OnClick(R.id.equal_button)
     public void resetButtonPressed() {
         RxBus.post(new ResetButtonObserver.ResetButtonPressed());
     }
