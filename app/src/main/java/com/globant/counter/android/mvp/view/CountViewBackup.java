@@ -12,11 +12,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class CountView extends ActivityView {
+public class CountViewBackup extends ActivityView {
 
     @BindView(R.id.count_label) TextView countLabel;
 
-    public CountView(Activity activity) {
+    public CountViewBackup(Activity activity) {
         super(activity);
         ButterKnife.bind(this, activity);
     }
