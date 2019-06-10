@@ -17,14 +17,14 @@ class MainActivity : AppCompatActivity() {
         val countViews = CountView(this)
         presenter = CountPresenter(CalculatorModel(), countViews)
 
-        add_button.setOnClickListener {
-            val number = calc_screen.text.toString()
-            countViews.addButtonPressed(number.toInt())
+        button_add.setOnClickListener {
+            val number = editText_calculator_input.text.toString()
+            countViews.addButtonPressed(number)
         }
 
-        equal_button.setOnClickListener {
-            val number = calc_screen.text.trim().toString()
-            countViews.equalButtonPressed(number.toInt())
+        button_equal.setOnClickListener {
+            val number = editText_calculator_input.text.trim().toString()
+            countViews.equalButtonPressed(number)
         }
 
         clear_button.setOnClickListener {

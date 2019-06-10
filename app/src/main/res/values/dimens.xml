@@ -3,4 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="calculator_screen_text_size">50sp</dimen>
+    <dimen name="calculator_input_text_size">30sp</dimen>
 </resources>

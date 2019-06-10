@@ -1,26 +1,26 @@
 package com.globant.counter.android.mvp.presenter
 
-import android.util.Log
+import android.text.TextUtils
+import butterknife.internal.Utils
 import com.globant.counter.android.mvp.model.CalculatorModel
 import com.globant.counter.android.mvp.view.CountView
 import com.globant.counter.android.util.bus.RxBus
 
 class CountPresenter(private val model: CalculatorModel, private val view: CountView) {
 
-    fun onAddButtonPressed(input: Int) {
-        model.set(input)
-        view.setNum("")
+    fun onAddButtonPressed(input: String) {
+            model.count = input.toInt()
+            view.clearField()
     }
 
-    fun onEqualButtonPressed(input: Int){
-        val total = model.getNum() + input
-        model.set(total)
-        view.setNum(model.getNum().toString())
+    fun onEqualButtonPressed(input: String) {
+            model.count += input.toInt()
+            view.setNumber(model.count.toString())
     }
 
     fun onClearButtonPressed() {
         model.clear()
-        view.setNum("")
+        view.clearField()
     }
 
     fun register() {

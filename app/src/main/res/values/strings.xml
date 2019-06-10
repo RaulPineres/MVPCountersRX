@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Android</string>
-    <string name="intial_value">0</string>
+    <string name="app_name">Calculator</string>
     <string name="addition">+</string>
     <string name="equals">=</string>
     <string name="default_zero">0</string>

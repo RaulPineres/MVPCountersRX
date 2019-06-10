@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_main"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/calc_screen"
+        android:id="@+id/editText_calculator_input"
         android:layout_width="wrap_content"
-        android:textSize="@dimen/calculator_screen_text_size"
         android:layout_height="wrap_content"
-        android:hint="@string/default_zero" />
+        android:hint="@string/default_zero"
+        android:inputType="number"
+        android:textSize="@dimen/calculator_screen_text_size" />
 
     <Button
-        android:id="@+id/add_button"
-        android:textSize="30sp"
+        android:id="@+id/button_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/addition"/>
+        android:text="@string/addition"
+        android:textSize="@dimen/calculator_input_text_size" />
 
     <Button
-        android:id="@+id/equal_button"
-        android:textSize="30sp"
+        android:id="@+id/button_equal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/equals"/>
+        android:text="@string/equals"
+        android:textSize="@dimen/calculator_input_text_size" />
 
     <Button
         android:id="@+id/clear_button"
-        android:textSize="30sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/clear_input"/>
+        android:text="@string/clear_input"
+        android:textSize="@dimen/calculator_input_text_size" />
 
 </LinearLayout>
