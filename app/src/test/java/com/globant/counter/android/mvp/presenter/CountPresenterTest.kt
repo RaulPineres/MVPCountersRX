@@ -12,7 +12,7 @@ class CountPresenterTest {
     private lateinit var model: CalculatorModel
     private lateinit var presenter: CountPresenter
     private lateinit var view: CountView
-    
+
     val TWO_VALUE_STRING = "2"
     val FOUR_VALUE_NUM = 4
     val FOUR_VALUE_STRING = "4"
