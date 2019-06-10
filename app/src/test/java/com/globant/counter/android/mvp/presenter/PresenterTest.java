@@ -36,7 +36,7 @@ public class PresenterTest {
         when(model.getCount()).thenReturn(1);
         presenter.onCountButtonPressed();
         verify(model).inc();
-        verify(view).setCount("1");
+        verify(view).showCount("1");
         verifyNoMoreInteractions(view);
     }
 
@@ -52,7 +52,7 @@ public class PresenterTest {
         presenter.onResetButtonPressed();
         verify(model).reset();
         assertEquals(model.getCount(), 0);
-        verify(view, times(4)).setCount(anyString());
+        verify(view, times(4)).showCount(anyString());
         verifyNoMoreInteractions(view);
     }
 }

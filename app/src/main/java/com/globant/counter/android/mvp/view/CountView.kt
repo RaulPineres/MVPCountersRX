@@ -6,10 +6,14 @@ import com.globant.counter.android.util.bus.observers.CountButtonUpBusObserver
 import com.globant.counter.android.util.bus.observers.ResetButtonObserver
 import kotlinx.android.synthetic.main.activity_main.*
 
-class CountView(private val activitys: Activity): ActivityView(activitys) {
+class CountView(private val activities: Activity): ActivityView(activities) {
 
-    fun setCount(count: String){
-        activitys.count_label.text = count
+    fun showCount(count: String){
+        activities.count_label.text = count
+    }
+
+    fun resetCount(count: String){
+        activities.count_label.text = count
     }
 
     fun countButtonPressed(){

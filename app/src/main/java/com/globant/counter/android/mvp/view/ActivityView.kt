@@ -11,4 +11,3 @@ open class ActivityView(activity: Activity) {
         return activityRef.get()
     }
 }
-
