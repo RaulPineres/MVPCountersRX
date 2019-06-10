@@ -9,20 +9,20 @@ import com.globant.counter.android.util.bus.observers.ResetButtonObserver
 
 class CountPresenter(val model: CountModel, val views: CountView) {
 
-    fun onCountButtonPressed(){
-        model.inc()
-        views.setCount(model.getCounts().toString())
+    fun onCountButtonPressed() {
+        model.count++
+        views.setCount(model.count.toString())
     }
 
-    fun onResetButtonPressed(){
+    fun onResetButtonPressed() {
         model.reset()
-        views.setCount(model.getCounts().toString())
+        views.setCount(model.count.toString())
     }
 
-    fun register(){
+    fun register() {
         val activity = views.getActivity() ?: return
 
-        RxBus.subscribe(activity, object : CountButtonUpBusObserver(){
+        RxBus.subscribe(activity, object : CountButtonUpBusObserver() {
             override fun onEvent(value: CountButtonUp?) {
                 Log.e(this.javaClass.simpleName, "onCountButtonPressed clicked: ")
                 onCountButtonPressed()
@@ -38,9 +38,8 @@ class CountPresenter(val model: CountModel, val views: CountView) {
         })
     }
 
-    fun unregister(){
+    fun unregister() {
         val activity = views.getActivity() ?: return
         RxBus.clear(activity)
     }
-
 }
